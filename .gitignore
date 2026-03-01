@@ -1,0 +1,15 @@
+# C Build Artifacts
+obj/
+bin/
+*.o
+
+# Python Environment
+venv/
+__pycache__/
+*.pyc
+
+# OS Files
+.DS_Store
+
+# Streamlit
+.streamlit/
