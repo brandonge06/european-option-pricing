@@ -9,6 +9,7 @@ BIN_DIR = bin
 SOURCES = $(SRC_DIR)/main.c $(SRC_DIR)/option_pricing.c
 OBJECTS = $(OBJ_DIR)/main.o $(OBJ_DIR)/option_pricing.o
 TARGET = $(BIN_DIR)/pricer
+TEST_TARGET = $(BIN_DIR)/tester
 
 # Ensure the bin and obj directories exist
 all: $(BIN_DIR) $(OBJ_DIR) $(TARGET)
@@ -25,7 +26,12 @@ $(TARGET): $(OBJECTS)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
+# Test target
+test: $(BIN_DIR) $(OBJ_DIR) $(OBJ_DIR)/option_pricing.o $(SRC_DIR)/tests.c
+	$(CC) $(CFLAGS) $(SRC_DIR)/tests.c $(OBJ_DIR)/option_pricing.o -o $(TEST_TARGET) $(LDFLAGS)
+	./$(TEST_TARGET)
+
 clean:
 	rm -rf $(OBJ_DIR) $(BIN_DIR)
 
-.PHONY: all clean
+.PHONY: all clean test
