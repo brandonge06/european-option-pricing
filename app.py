@@ -3,9 +3,9 @@ import pandas as pd
 import plotly.express as px
 from src.option_pricing import calculate_european_option_price
 
-st.set_page_config(page_title="CRR Option Dashboard (Python)", page_icon="🐍", layout="wide")
+st.set_page_config(page_title="CRR Option Dashboard", page_icon="📈", layout="wide")
 
-st.title("🐍 European Option Pricing Engine (Pure Python)")
+st.title("European Option Pricing Engine")
 
 # --- Sidebar Inputs ---
 st.sidebar.header("📊 Option Parameters")
@@ -46,9 +46,8 @@ with col2:
 
 st.divider()
 st.markdown("""
-### 🏗️ Technical Architecture (Updated to Pure Python)
-- **Engine:** Pure Python using **NumPy** for vectorized binomial calculations.
+### 🏗️ Technical Architecture
+- **Engine:** Python using **NumPy** for vectorized binomial calculations.
 - **Optimization:** $O(n)$ space complexity via in-place array updates.
-- **Performance:** Replaces the C backend with high-performance vectorized Python, eliminating compilation steps.
 - **Frontend:** Streamlit + Plotly for interactive visualization.
 """)

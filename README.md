@@ -1,14 +1,14 @@
-# 🐍 European Option Pricing Engine (Pure Python)
+# European Option Pricing Engine
 
-A high-performance financial engineering tool for pricing European Options using the **Cox-Ross-Rubinstein (CRR) Binomial Tree model**, implemented entirely in **Python** with **NumPy** for optimized vectorized calculations.
+A high-performance financial engineering tool for pricing European Options using the **Cox-Ross-Rubinstein (CRR) Binomial Tree model**, implemented in **Python** with **NumPy** for optimized vectorized calculations.
 
 ---
 
 ## 🏗️ Project Architecture
-- **Engine:** Pure Python using **NumPy** for vectorized binomial calculations.
+- **Engine:** Python using **NumPy** for vectorized binomial calculations.
 - **Optimization:** $O(n)$ space complexity via in-place array updates.
 - **Frontend:** Streamlit + Plotly for interactive visualization.
-- **Performance:** Leverages NumPy's underlying C-based array operations for fast simulation results without the need for an external compilation step.
+- **Performance:** Leverages NumPy's underlying C-based array operations for fast simulation results.
 
 ---
 
@@ -39,10 +39,11 @@ bash start.sh
 ### 🧪 Run Tests (Manually)
 To run the `unittest` suite directly:
 ```bash
+export PYTHONPATH=$PYTHONPATH:.
 python3 src/tests.py
 ```
 
 ---
 
 ### 📝 Author
-Built as a professional pure Python financial engineering tool.
+Built as a professional financial engineering tool.
