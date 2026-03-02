@@ -1,57 +1,48 @@
-# 💰 European Option Pricing Engine (CRR)
+# 🐍 European Option Pricing Engine (Pure Python)
 
-A high-performance financial engineering tool for pricing European Options using the **Cox-Ross-Rubinstein (CRR) Binomial Tree model**.
+A high-performance financial engineering tool for pricing European Options using the **Cox-Ross-Rubinstein (CRR) Binomial Tree model**, implemented entirely in **Python** with **NumPy** for optimized vectorized calculations.
 
 ---
 
-## 🛠️ Project Features
-- **$O(n)$ Space Complexity**: Memory-optimized 1D array implementation.
-- **Thread-Safe & Reentrant**: Pure functional C implementation with no global state.
-- **Abstracted Interface**: Clean separation of option parameters and pricing logic.
-- **Interactive UI**: Modern Streamlit dashboard with real-time visualizations.
-- **Test Suite**: Automated unit tests for accuracy verification.
+## 🏗️ Project Architecture
+- **Engine:** Pure Python using **NumPy** for vectorized binomial calculations.
+- **Optimization:** $O(n)$ space complexity via in-place array updates.
+- **Frontend:** Streamlit + Plotly for interactive visualization.
+- **Performance:** Leverages NumPy's underlying C-based array operations for fast simulation results without the need for an external compilation step.
 
 ---
 
 ## 🔬 Mathematical Foundation
+
 The CRR model provides a discrete-time approximation of the Black-Scholes continuous-time model. It assumes that at each discrete time step, the asset price can either move **Up** ($u$) or **Down** ($d$).
 
 | Variable | Description | Contribution to Model |
 | :--- | :--- | :--- |
 | `spot` ($S_0$) | **Current Asset Price** | The starting point of the binomial tree. |
-| `strike` ($K$) | **Exercise Price** | Used to calculate the payoff. |
-| `time` ($T$) | **Years to Maturity** | Determines the horizontal distance of the tree. |
+| `strike` ($K$) | **Exercise Price** | Used to calculate the payoff: $\max(S_T - K, 0)$ for calls. |
+| `time` ($T$) | **Years to Maturity** | Determines the total horizontal distance of the tree. |
 | `rate` ($r$) | **Risk-Free Rate** | The discounting factor for backward induction. |
 | `volatility` ($\sigma$) | **Asset Volatility** | Determines the magnitude of 'up' and 'down' moves ($u, d$). |
-| `steps` ($n$) | **Binomial Steps** | The number of time intervals. |
+| `steps` ($n$) | **Binomial Steps** | The number of time intervals. More steps = higher precision. |
 
 ---
 
-## 🏃 Getting Started
+## 🚀 Running the Project
 
-### 🖥️ CLI Mode
-```bash
-make clean && make
-./bin/pricer 100.0 100.0 1.0 0.05 0.2 1000 c
-```
+To run the interactive web interface (requires Python 3.9+):
 
-### 🧪 Run Tests
 ```bash
-make test
-```
-
-### 🌐 Web Dashboard
-```bash
+cd european-option-pricing
 bash start.sh
 ```
 
+### 🧪 Run Tests (Manually)
+To run the `unittest` suite directly:
+```bash
+python3 src/tests.py
+```
+
 ---
 
-## 🔒 Thread Safety & Reentrancy
-The core engine (`calculate_european_option_price`) is designed for high-concurrency environments:
-1. **No Shared State**: Does not use static variables, global locks, or external files.
-2. **Local Memory Allocation**: All heap memory (`malloc`) is local to the function call and is `free`d before return.
-3. **Immutable Input**: Uses `const OptionParams*` to prevent accidental modification of parameters.
-
 ### 📝 Author
-Built as a professional C financial engineering tool.
+Built as a professional pure Python financial engineering tool.
