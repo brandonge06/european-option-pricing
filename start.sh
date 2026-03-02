@@ -20,6 +20,8 @@ pip install -r requirements.txt --quiet
 
 # 4. Run Tests
 echo "--- Running Engine Tests ---"
+# Set PYTHONPATH to the current directory so 'src' is importable
+export PYTHONPATH=$PYTHONPATH:.
 python3 src/tests.py
 
 # 5. Launch the dashboard
